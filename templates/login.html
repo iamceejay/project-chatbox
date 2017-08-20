@@ -1,0 +1,37 @@
+<div id="login-box" ng-controller="loginCtrl" class="slide-down">
+    <div class="col-sm-offset-4 col-sm-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Login</h3>
+            </div>
+
+            <div class="panel-body">
+                <div class="login-img">
+                    <img src="assets/img/man.png" alt="login-image">
+                </div>
+
+                <form name="loginForm" novalidate>
+                    <div class="form-group">
+                        <label class="control-label">E-mail</label>
+                        <input type="email" class="form-control" placeholder="E-mail" ng-model="input.email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Password</label>
+                        <input type="password" class="form-control" placeholder="Password" ng-model="input.password" required>
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-block" ng-click="login()" ng-disabled="loginForm.$invalid">Login</button>
+                    </div>
+                </form>
+
+                <div class="text-center">
+                    <p><small>Don't have an account? <strong ng-click="redirectCreateAcc()" class="text-primary" style="cursor: pointer;">Create now</strong>.</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-right'}"></toaster-container>

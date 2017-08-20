@@ -1,0 +1,44 @@
+<div id="chatbox" ng-controller="chatboxCtrl" class="slide-down">
+    <div class="col-sm-offset-3 col-sm-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title"><strong>CHATBOX</strong></h3>
+            </div>
+
+            <div class="panel-body">
+                <div scroll-glue class="chat-area well well-sm">
+                    <div class="panel panel-default messages scale-fade" ng-repeat="message in messages" ng-class="{'my-message' : message.user == user}">
+                        <div class="panel-body">
+                            <small ng-if="message.user != user"><strong class="text-primary">{{ message.user }}</strong> said,</small>
+                            <small ng-if="message.user == user"><strong class="text-primary">You</strong> said,</small>
+                            
+                            <p>
+                                <small><strong>{{ message.message }}</strong></small>
+                            </p>
+                            
+                            <small class="text-muted">on <strong>{{ message.date }}</strong></small>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="form-horizontal" style="margin-top: 10px;">
+                    <div class="form-group">
+                        <div class="col-xs-9">
+                            <input class="form-control" placeholder="Type message here..." ng-model="chat.message" maxlength="100">
+                        </div>
+
+                        <div class="col-xs-3">
+                            <button class="btn btn-primary" ng-click="send()" style="height: 100% !important; width: 100% !important;" ng-disabled="wait"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                </form>
+
+                <span class="label label-primary"><i class="fa fa-user-circle" aria-hidden="true"></i> Logged-in as: {{ user }}</span>
+                <span class="label label-primary"><i class="fa fa-calendar" aria-hidden="true"></i> {{ date }}</span>
+                <span class="label label-danger" role="button" ng-click="logout()"><i class="fa fa-power-off" aria-hidden="true"></i> Logout</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-right'}"></toaster-container>
